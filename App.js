@@ -29,7 +29,11 @@ export default function App() {
         ></Button>
       </View>
       <View>
-        {actvityList.map((activity) => <Text key={activity}>{activity}</Text>)}
+        {actvityList.map((act) => 
+          <View style={styles.actvityList}>
+            <Text key={act}>{act}</Text>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -49,5 +53,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '85%',
     padding: 5
+  },
+  actvityList: {
+    backgroundColor: '#ccc',
+    padding: 10,
+    marginVertical: 2,
   }
 });
