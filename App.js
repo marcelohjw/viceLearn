@@ -4,13 +4,13 @@ import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
 export default function App() {
   return (
-    <View style={{padding: 50}}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+    <View style={styles.container}>
+      <View style={styles.inputContainer}>
         <TextInput 
           placeholder="Digite aqui" 
-          style={{borderColor: 'gray', borderWidth: 1, width: '80%', padding: 5}}
+          style={styles.input}
         />
-        <Button title="Add"></Button>
+        <Button title="Adicionar"></Button>
       </View>
       <View>
 
@@ -21,9 +21,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 50
   },
+  inputContainer: { 
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  input: {
+    borderColor: 'gray',
+    borderWidth: 1,
+    width: '85%',
+    padding: 5
+  }
 });
