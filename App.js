@@ -1,19 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
 export default function App() {
+  const [enteredAct, setEnteredAct] = useState('');
+  const [actvityList, setActivty] = useState([]);
+
+  const addActvInputHandler = (enteredText) => {
+    setEnteredAct(enteredText);
+  };
+
+  const addActvHandler = () => {
+    setActivty(currentActivitys => [...actvityList, enteredAct]);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput 
           placeholder="Digite aqui" 
           style={styles.input}
+          onChangeText={addActvInputHandler}
+          value={enteredAct}
         />
-        <Button title="Adicionar"></Button>
+        <Button 
+          title="Adicionar" 
+          onPress={addActvHandler}
+        ></Button>
       </View>
       <View>
-
+        {actvityList.map((activity) => <Text key={activity}>{activity}</Text>)}
       </View>
     </View>
   );
