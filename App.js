@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView} from 'react-native';
 
 export default function App() {
   const [enteredAct, setEnteredAct] = useState('');
@@ -28,13 +28,13 @@ export default function App() {
           onPress={addActvHandler}
         ></Button>
       </View>
-      <View>
+      <ScrollView>
         {actvityList.map((act) => 
-          <View style={styles.actvityList}>
-            <Text key={act}>{act}</Text>
+          <View style={styles.actvityList} key={act}>
+            <Text>{act}</Text>
           </View>
         )}
-      </View>
+      </ScrollView>
     </View>
   );
 }
