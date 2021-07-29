@@ -1,6 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
+
+import ActivityItem from './components/ActivityItem';
 
 export default function App() {
   const [enteredAct, setEnteredAct] = useState('');
@@ -30,11 +31,7 @@ export default function App() {
       </View>
       <FlatList
         data={actvityList}
-        renderItem={ itemData => ( 
-          <View style={styles.actvityList}>
-            <Text>{itemData.item.value}</Text>
-          </View>
-        )}
+        renderItem={ itemData => <ActivityItem title={itemData.item.value} />}
         />
     </View>
   );
@@ -54,10 +51,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '85%',
     padding: 5
-  },
-  actvityList: {
-    backgroundColor: '#ccc',
-    padding: 10,
-    marginVertical: 2,
   }
 });
