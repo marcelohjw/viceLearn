@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 
 export default function App() {
   const [enteredAct, setEnteredAct] = useState('');
@@ -11,7 +11,7 @@ export default function App() {
   };
 
   const addActvHandler = () => {
-    setActivty(currentActivitys => [...actvityList, enteredAct]);
+    setActivty(currentActivitys => [...actvityList, {key: Math.random().toString(), value: enteredAct}]);
   };
 
   return (
@@ -28,13 +28,14 @@ export default function App() {
           onPress={addActvHandler}
         ></Button>
       </View>
-      <ScrollView>
-        {actvityList.map((act) => 
-          <View style={styles.actvityList} key={act}>
-            <Text>{act}</Text>
+      <FlatList
+        data={actvityList}
+        renderItem={ itemData => ( 
+          <View style={styles.actvityList}>
+            <Text>{itemData.item.value}</Text>
           </View>
         )}
-      </ScrollView>
+        />
     </View>
   );
 }
