@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button,  StyleSheet  } from 'react-native';
+import { View, TextInput, Button,  StyleSheet, Modal  } from 'react-native';
 
 const ActivityInput = props => {
     const [enteredAct, setEnteredAct] = useState('');
@@ -9,18 +9,20 @@ const ActivityInput = props => {
       };
 
     return (
-    <View style={styles.inputContainer}>
-        <TextInput 
-          placeholder="Digite aqui" 
-          style={styles.input}
-          onChangeText={addActvInputHandler}
-          value={enteredAct}
-        />
-        <Button 
-          title="ADD" 
-          onPress={() => props.onAddActivity(enteredAct)}
-        ></Button>
-    </View>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+          <TextInput 
+            placeholder="Digite aqui" 
+            style={styles.input}
+            onChangeText={addActvInputHandler}
+            value={enteredAct}
+          />
+          <Button 
+            title="ADD" 
+            onPress={() => props.onAddActivity(enteredAct)}
+          ></Button>
+      </View>
+    </Modal>
     );
 }
 

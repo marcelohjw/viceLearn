@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
 import ActivityItem from './components/ActivityItem';
 import ActivityInput from './components/ActivityInput';
 
 export default function App() {
   const [activityList, setActivity] = useState([]);
-
+  const [isAddActivity, setIsAddActivity] = useState(false);
 
 
   const addActvHandler = activityTitle => {
@@ -21,7 +21,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <ActivityInput onAddActivity={addActvHandler} />
+      <Button title="Nova Tarefa" onPress={() => setIsAddActivity(true)}/>
+      <ActivityInput visible={isAddActivity} onAddActivity={addActvHandler} />
       <FlatList
         data={activityList}
         renderItem={ itemData => <ActivityItem id={itemData.item.key} onDelete={removeActivityHandler} title={itemData.item.value} />}
