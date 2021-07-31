@@ -18,7 +18,7 @@ const ActivityInput = props => {
             value={enteredAct}
           />
           <Button 
-            title="ADD" 
+            title="ADICIONAR" 
             onPress={() => props.onAddActivity(enteredAct)}
           ></Button>
       </View>
@@ -27,16 +27,17 @@ const ActivityInput = props => {
 }
 
 const styles = StyleSheet.create({
-    inputContainer: { 
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    inputContainer: {
+        flex: 1, 
+        justifyContent: 'center',
         alignItems: 'center'
       },
       input: {
         borderColor: 'gray',
         borderWidth: 1,
         width: '85%',
-        padding: 5
+        padding: 5,
+        marginBottom: 5
       }
 });
 

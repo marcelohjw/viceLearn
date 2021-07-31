@@ -11,6 +11,7 @@ export default function App() {
 
   const addActvHandler = activityTitle => {
     setActivity(currentActivitys => [...activityList, {key: Math.random().toString(), value: activityTitle}]);
+    setIsAddActivity(false);
   };
 
   const removeActivityHandler = activityId => {
