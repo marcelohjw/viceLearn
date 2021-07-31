@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import ActivityItem from './components/ActivityItem';
 import ActivityInput from './components/ActivityInput';
 
 export default function App() {
-  const [actvityList, setActivty] = useState([]);
+  const [activityList, setActivity] = useState([]);
 
 
 
   const addActvHandler = activityTitle => {
-    setActivty(currentActivitys => [...actvityList, {key: Math.random().toString(), value: activityTitle}]);
+    setActivity(currentActivitys => [...activityList, {key: Math.random().toString(), value: activityTitle}]);
+  };
+
+  const removeActivityHandler = activityId => {
+    setActivity(currentActivitys => {
+        return currentActivitys.filter((activity) => activity.key !== activityId);
+    });
   };
 
   return (
     <View style={styles.container}>
       <ActivityInput onAddActivity={addActvHandler} />
       <FlatList
-        data={actvityList}
-        renderItem={ itemData => <ActivityItem onDelete={() => console.log('Test applied')} title={itemData.item.value} />}
+        data={activityList}
+        renderItem={ itemData => <ActivityItem id={itemData.item.key} onDelete={removeActivityHandler} title={itemData.item.value} />}
         />
     </View>
   );
