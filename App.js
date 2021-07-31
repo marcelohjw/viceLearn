@@ -20,10 +20,14 @@ export default function App() {
     });
   };
 
+  const cancelActivityHandler = () => {
+    setIsAddActivity(false);
+  };
+
   return (
     <View style={styles.container}>
       <Button title="Nova Tarefa" onPress={() => setIsAddActivity(true)}/>
-      <ActivityInput visible={isAddActivity} onAddActivity={addActvHandler} />
+      <ActivityInput visible={isAddActivity} onAddActivity={addActvHandler} onCancelActivity={cancelActivityHandler}/>
       <FlatList
         data={activityList}
         renderItem={ itemData => <ActivityItem id={itemData.item.key} onDelete={removeActivityHandler} title={itemData.item.value} />}

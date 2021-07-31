@@ -28,7 +28,8 @@ const ActivityInput = props => {
           />
           <Button 
             title="CANCELAR"
-            color="red" 
+            color="red"
+            onPress={props.onCancelActivity} 
           />
       </View>
     </Modal>
