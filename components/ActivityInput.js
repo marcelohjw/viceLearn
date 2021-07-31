@@ -17,26 +17,37 @@ const ActivityInput = props => {
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
           <TextInput 
-            placeholder="Digite aqui" 
+            placeholder="Tarefa" 
             style={styles.input}
             onChangeText={addActvInputHandler}
             value={enteredAct}
           />
-          <Button 
-            title="ADICIONAR" 
-            onPress={addActivityHandler}
-          />
-          <Button 
-            title="CANCELAR"
-            color="red"
-            onPress={props.onCancelActivity} 
-          />
+          <View style={styles.inputButtons}>
+            <View style={styles.button}>
+              <Button 
+                title="ADICIONAR" 
+                onPress={addActivityHandler}
+              />
+            </View>
+            <View style={styles.button}>
+              <Button 
+                title="CANCELAR"
+                color="red"
+                onPress={props.onCancelActivity} 
+              />
+            </View>
+          </View>
       </View>
     </Modal>
     );
 }
 
 const styles = StyleSheet.create({
+    inputButtons: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '60%'
+      },
     inputContainer: {
         flex: 1, 
         justifyContent: 'center',
@@ -48,6 +59,9 @@ const styles = StyleSheet.create({
         width: '85%',
         padding: 5,
         marginBottom: 5
+      },
+      button: {
+        width: '50%'
       }
 });
 
