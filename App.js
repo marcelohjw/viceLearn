@@ -18,7 +18,7 @@ export default function App() {
       <ActivityInput onAddActivity={addActvHandler} />
       <FlatList
         data={actvityList}
-        renderItem={ itemData => <ActivityItem title={itemData.item.value} />}
+        renderItem={ itemData => <ActivityItem onDelete={() => console.log('Test applied')} title={itemData.item.value} />}
         />
     </View>
   );
