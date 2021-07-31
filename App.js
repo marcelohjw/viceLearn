@@ -10,6 +10,10 @@ export default function App() {
 
 
   const addActvHandler = activityTitle => {
+    if (activityTitle.length === 0) {
+      return;
+    }
+
     setActivity(currentActivitys => [...activityList, {key: Math.random().toString(), value: activityTitle}]);
     setIsAddActivity(false);
   };
@@ -28,15 +32,20 @@ export default function App() {
     <View style={styles.container}>
       <Button title="Nova Tarefa" onPress={() => setIsAddActivity(true)}/>
       <ActivityInput visible={isAddActivity} onAddActivity={addActvHandler} onCancelActivity={cancelActivityHandler}/>
+      <View style={styles.taskList}>
       <FlatList
         data={activityList}
         renderItem={ itemData => <ActivityItem id={itemData.item.key} onDelete={removeActivityHandler} title={itemData.item.value} />}
         />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  taskList: {
+    paddingTop: '2%'
+  },
   container: {
     padding: 50
   }
