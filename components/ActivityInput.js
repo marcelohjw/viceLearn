@@ -8,6 +8,11 @@ const ActivityInput = props => {
         setEnteredAct(enteredText);
       };
 
+    const addActivityHandler = () => {
+      props.onAddActivity(enteredAct);
+      setEnteredAct('');
+    };
+
     return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
@@ -19,8 +24,12 @@ const ActivityInput = props => {
           />
           <Button 
             title="ADICIONAR" 
-            onPress={() => props.onAddActivity(enteredAct)}
-          ></Button>
+            onPress={addActivityHandler}
+          />
+          <Button 
+            title="CANCELAR"
+            color="red" 
+          />
       </View>
     </Modal>
     );
